@@ -108,6 +108,22 @@
             padding: 10px;
             border-left: 3px solid var(--highlight-color);
         }
+
+        .zoom-link {
+            color: var(--highlight-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--highlight-color);
+            padding-bottom: 2px;
+            transition: opacity 0.3s ease;
+        }
+
+        .zoom-link:hover {
+            opacity: 0.8;
+        }
+
+        .zoom-link:visited {
+            color: var(--highlight-color);
+        }
     </style>
 </head>
 <body>
@@ -126,17 +142,19 @@
     <h2>Section 1: Client-Side Configuration</h2>
     <div class="step">
         <h3>Step 1: Accessing Video Settings</h3>
-        <p>1. Launch the Zoom desktop application</p>
-        <p>2. Navigate to Settings via the profile icon in the upper-right corner</p>
-        <p>3. Access the Settings panel</p>
-        <p>4. Navigate to the Video settings section in the left navigation menu</p>
+        <p>1. Visit <a href="https://us02web.zoom.us/profile/setting" target="_blank" class="zoom-link">Zoom Web Settings Portal</a></p>
+        <p>2. Sign in to your Zoom account if prompted</p>
+        <p>3. In the left sidebar, click on "Settings"</p>
+        <p>4. Navigate to "Meeting" tab</p>
+        <p>5. Scroll down to "In Meeting (Advanced)"</p>
+        <p>6. Look for "Meeting HD Video Quality" toggle</p>
         <img src="images/zoom-settings-navigation.png" alt="Zoom Settings Navigation">
     </div>
 
     <div class="step">
         <h3>Step 2: HD Configuration</h3>
-        <p>1. Locate the "Meeting-HD Video Quality" option within Video settings</p>
-        <p>2. Enable the HD video quality setting</p>
+        <p>1. Within the "In Meeting (Advanced)" section, locate the "Meeting-HD Video Quality" option</p>
+        <p>2. Toggle the switch to enable HD video</p>
         <p>Note: Enhanced video quality settings will increase bandwidth requirements for both meeting hosts and participants.</p>
         <img src="images/zoom-hd-toggle.png" alt="Enable HD Toggle">
     </div>
@@ -144,9 +162,10 @@
     <h2>Section 2: Account-Level Activation</h2>
     <div class="step">
         <h3>Step 1: Initiating Support Request</h3>
-        <p>1. Access the Zoom Support Portal</p>
-        <p>2. Initialize a new support request by selecting "Submit a Ticket"</p>
-        <p>3. Categorize the request as "Technical Support"</p>
+        <p>1. Visit the <a href="https://support.zoom.com/hc/en/contact?id=contact_us" target="_blank" class="zoom-link">Zoom Support Portal</a></p>
+        <p>2. Scroll down to the bottom of the page</p>
+        <p>3. Look for and click the "Submit a Ticket" button</p>
+        <p>4. You will be redirected to the support ticket form</p>
         <img src="images/zoom-support-portal.png" alt="Zoom Support Portal">
     </div>
 
