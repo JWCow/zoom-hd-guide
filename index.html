@@ -222,7 +222,7 @@
             background-color: var(--bg-color);
             border-radius: 5px;
             margin: 10px 0 20px 0;
-            padding: 8px;
+            padding: 5px;
             border: 1px solid var(--border-color);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
@@ -243,24 +243,31 @@
             justify-content: space-around;
             list-style-type: none;
             margin: 0;
-            padding: 10px 0;
-            gap: 10px;
+            padding: 5px 0;
+            gap: 5px;
         }
 
         .navigation-header nav li {
-            margin: 5px;
+            margin: 3px;
         }
 
         .navigation-header nav a {
             color: var(--highlight-color);
             text-decoration: none;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 4px;
             font-weight: bold;
             transition: all 0.3s ease;
             white-space: nowrap;
-            display: inline-block;
+            display: flex;
+            align-items: center;
             border: 1px solid var(--highlight-color);
+            font-size: 0.9em;
+        }
+
+        .nav-icon {
+            margin-right: 5px;
+            font-size: 1.1em;
         }
 
         .navigation-header nav a:hover {
@@ -269,21 +276,35 @@
         }
 
         /* Responsive adjustments for navigation */
+        @media (max-width: 768px) {
+            .navigation-header nav a {
+                padding: 6px 8px;
+                justify-content: center;
+            }
+            
+            .nav-text {
+                display: none;
+            }
+            
+            .nav-icon {
+                margin-right: 0;
+                font-size: 1.3em;
+            }
+        }
+        
         @media (max-width: 600px) {
             .navigation-header nav ul {
-                flex-direction: column;
-                align-items: center;
+                justify-content: center;
             }
             
             .navigation-header nav li {
-                margin: 5px 0;
-                width: 100%;
-                text-align: center;
+                margin: 2px;
             }
             
             .navigation-header nav a {
-                display: block;
-                width: 100%;
+                padding: 8px;
+                min-width: 40px;
+                justify-content: center;
             }
         }
 
@@ -377,11 +398,36 @@
     <div class="navigation-header">
         <nav>
             <ul>
-                <li><a href="#requirements">Plan Requirements</a></li>
-                <li><a href="#initial-testing">Initial Testing</a></li>
-                <li><a href="#step1">Settings Configuration</a></li>
-                <li><a href="#step2">Support Request</a></li>
-                <li><a href="#verification">Final Verification</a></li>
+                <li>
+                    <a href="#requirements">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">Plan Requirements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#initial-testing">
+                        <span class="nav-icon">🔍</span>
+                        <span class="nav-text">Initial Testing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#step1">
+                        <span class="nav-icon">⚙️</span>
+                        <span class="nav-text">Settings Configuration</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#step2">
+                        <span class="nav-icon">🎫</span>
+                        <span class="nav-text">Support Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#verification">
+                        <span class="nav-icon">✅</span>
+                        <span class="nav-text">Final Verification</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
