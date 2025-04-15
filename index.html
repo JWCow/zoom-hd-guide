@@ -497,6 +497,65 @@
                 justify-content: center;
             }
         }
+        
+        /* Accordion Styles */
+        .accordion {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            background-color: var(--note-bg);
+            color: var(--highlight-color);
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background-color: #e9ecef;
+        }
+        
+        .accordion-header.active {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: 1px solid var(--highlight-color);
+        }
+        
+        .accordion-header::after {
+            content: "+";
+            font-size: 1.5em;
+            margin-left: 10px;
+        }
+        
+        .accordion-header.active::after {
+            content: "−";
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .accordion-inner {
+            padding: 15px;
+        }
+        
+        .active + .accordion-content {
+            max-height: 9999px;
+        }
     </style>
 </head>
 <body>
@@ -516,13 +575,24 @@
 
     <h1>Getting HD Video Quality in Zoom</h1>
 
+    <!-- TLDR Section -->
+    <div id="tldr" class="note" style="background-color: #f0f7ff; border-left: 4px solid #2D8CFF;">
+        <h3>TLDR for Tech-Savvy Users</h3>
+        <p>Enabling HD video in Zoom requires two steps:</p>
+        <ol>
+            <li><strong>Frontend:</strong> Enable "Meeting HD Video Quality" in your Zoom account settings</li>
+            <li><strong>Backend:</strong> Contact Zoom Support to request backend activation of HD capabilities</li>
+        </ol>
+        <p>Both steps are necessary - the frontend setting alone won't enable HD. See detailed instructions below.</p>
+    </div>
+
     <div class="navigation-header">
         <nav>
             <ul>
                 <li>
-                    <a href="#requirements">
-                        <span class="nav-icon">📋</span>
-                        <span class="nav-text">Plan Requirements</span>
+                    <a href="#tldr">
+                        <span class="nav-icon">⚡</span>
+                        <span class="nav-text">TLDR</span>
                     </a>
                 </li>
                 <li>
@@ -549,137 +619,173 @@
                         <span class="nav-text">Final Verification</span>
                     </a>
                 </li>
+                <li>
+                    <a href="#technical-stuff">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">Technical Stuff</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
 
-    <div id="requirements" class="note">
-        <strong>Important Note:</strong> Zoom typically limits video quality to conserve bandwidth. To enable HD video, you'll need to adjust your settings and request activation from Zoom Support. We'll guide you through both steps below.
-        
-        <h3>Requirements for HD Video</h3>
-        
-        <h4>Standard HD (720p)</h4>
-        <ul>
-            <li><strong>Account type:</strong> Pro, Business, Education, or Enterprise account</li>
-            <li><strong>Application:</strong> Full-screen meeting window on Zoom desktop app</li>
-            <li><strong>Software:</strong> Zoom desktop app for Windows, macOS, or Linux (Global minimum version or higher)</li>
-            <li><strong>Mobile:</strong> Zoom mobile app for Android or iOS (Global minimum version or higher)</li>
-        </ul>
-        
-        <h4>Full HD (1080p)</h4>
-        <ul>
-            <li><strong>Account type:</strong> Pro (with Zoom Events or Zoom Sessions license), Business, Education, or Enterprise account</li>
-            <li><strong>Support activation:</strong> Setting must be enabled by Zoom Support</li>
-            <li><strong>Hardware:</strong> i7 Quad Core (physical core) CPU or higher</li>
-            <li><strong>Software:</strong> Zoom desktop app for Windows or macOS (Global minimum version or higher)</li>
-        </ul>
-        
-        <p><strong>Note:</strong> HD video requires a stable internet connection. For best results, ensure you have a high-speed connection.</p>
-    </div>
-
-    <div id="initial-testing" class="note">
-        <strong>Initial Testing:</strong> Before proceeding, you can verify if your account already has HD enabled:
-        <ol>
-            <li>Start a Zoom meeting with at least one other participant</li>
-            <li>Make sure your camera is turned on with the HD option checked in settings</li>
-            <li>Go to Statistics (in the Settings menu)</li>
-            <li>If your resolution shows only 640×360p, then your account does not have HD enabled (this is Zoom's default)</li>
-        </ol>
-        <img src="images/01-initial test.png" alt="Initial HD testing - Camera settings">
-        <img src="images/02-initial test.png" alt="Initial HD testing - Statistics showing 640×360 resolution">
-    </div>
-
-    <h2 id="step1">Step 1: Configuring Your Settings</h2>
-    <div class="step">
-        <h3>Accessing Video Settings</h3>
-        <p>1. Go to the <a href="https://us02web.zoom.us/profile/setting" target="_blank" class="zoom-link">Zoom Settings Page</a></p>
-        <p>2. Sign in to your Zoom account if needed</p>
-        <p>3. Find "Settings" in the left menu</p>
-        <p>4. Select the "Meeting" tab</p>
-        <p>5. Scroll to "In Meeting (Advanced)"</p>
-        <p>6. Find the "Meeting HD Video Quality" option</p>
-        <img src="images/zoom-settings-navigation.png" alt="Location of Zoom HD settings">
-    </div>
-
-    <div class="step">
-        <h3>Enabling HD Video</h3>
-        <p>1. Locate the "Meeting HD Video Quality" switch and turn it on</p>
-        <p>2. This completes the settings configuration</p>
-        <p>Note: HD video requires a stable internet connection. If you experience connectivity issues, you may want to use standard quality instead.</p>
-        <img src="images/zoom-hd-toggle.png" alt="HD video quality toggle">
-    </div>
-
-    <h2 id="step2">Step 2: Requesting HD Activation</h2>
-    <div class="step">
-        <h3>Contacting Support</h3>
-        <p>1. Visit the <a href="https://support.zoom.com/hc/en/contact?id=contact_us" target="_blank" class="zoom-link">Zoom Support Center</a></p>
-        <p>2. Scroll to the bottom of the page</p>
-        <p>3. Click the "Submit a Ticket" button</p>
-        <p>4. You'll be taken to the support request form</p>
-        <img src="images/zoom-support-portal.png" alt="Zoom Support Center">
-    </div>
-
-    <div class="step">
-        <h3>Submitting Your Request</h3>
-        <p>Complete the form with these details:</p>
-        
-        <div class="support-details">
-            <div class="field-instruction">
-                <strong>Issue Type:</strong>
-                <p>Select "Technical Support"</p>
-            </div>
-            
-            <div class="field-instruction">
-                <strong>Priority Level:</strong>
-                <p>Select "Normal" - standard for feature requests</p>
-            </div>
-            
-            <div class="field-instruction">
-                <strong>Subject:</strong>
-                <p>Use: "HD Video Quality Activation Request"</p>
-            </div>
-            
-            <div class="field-instruction">
-                <strong>Description:</strong>
-                <p>You can use this message:</p>
-                <blockquote>
-                    "Hello, I would like to request HD video quality activation on the backend for my Zoom account. I have enabled the HD settings in my account and would appreciate your help in activating this feature. This will help improve the video quality of my meetings. Thank you for your assistance."
-                </blockquote>
+    <div id="initial-testing" class="accordion">
+        <div class="accordion-header">Initial Testing</div>
+        <div class="accordion-content">
+            <div class="accordion-inner">
+                <strong>Initial Testing:</strong> Before proceeding, you can verify if your account already has HD enabled:
+                <ol>
+                    <li>Start a Zoom meeting with at least one other participant</li>
+                    <li>Make sure your camera is turned on with the HD option checked in settings</li>
+                    <li>Go to Statistics (in the Settings menu)</li>
+                    <li>If your resolution shows only 640×360p, then your account does not have HD enabled (this is Zoom's default)</li>
+                </ol>
+                <img src="images/01-initial test.png" alt="Initial HD testing - Camera settings">
+                <img src="images/02-initial test.png" alt="Initial HD testing - Statistics showing 640×360 resolution">
             </div>
         </div>
-
-        <p>Reference for the support form:</p>
-        <img src="images/zoom-support-ticket.png" alt="Support request form">
-        <p>Additional form fields:</p>
-        <img src="images/zoom-support-ticket2.png" alt="Support form details">
     </div>
 
-    <div class="step">
-        <h3>Confirmation</h3>
-        <p>After Zoom processes your request, you'll receive a confirmation that HD has been activated. You may need to restart your Zoom application for the changes to take effect.</p>
-        <p>Confirmation message example:</p>
-        <img src="images/zoom-hd-confirmation.png" alt="HD activation confirmation">
-        <p>Additional confirmation details:</p>
-        <img src="images/zoom-hd-confirmation2.png" alt="Activation details">
+    <div id="step1" class="accordion">
+        <div class="accordion-header">Step 1: Configuring Your Settings</div>
+        <div class="accordion-content">
+            <div class="accordion-inner">
+                <div class="step">
+                    <h3>Accessing Video Settings</h3>
+                    <p>1. Go to the <a href="https://us02web.zoom.us/profile/setting" target="_blank" class="zoom-link">Zoom Settings Page</a></p>
+                    <p>2. Sign in to your Zoom account if needed</p>
+                    <p>3. Find "Settings" in the left menu</p>
+                    <p>4. Select the "Meeting" tab</p>
+                    <p>5. Scroll to "In Meeting (Advanced)"</p>
+                    <p>6. Find the "Meeting HD Video Quality" option</p>
+                    <img src="images/zoom-settings-navigation.png" alt="Location of Zoom HD settings">
+                </div>
+
+                <div class="step">
+                    <h3>Enabling HD Video</h3>
+                    <p>1. Locate the "Meeting HD Video Quality" switch and turn it on</p>
+                    <p>2. This completes the settings configuration</p>
+                    <p>Note: HD video requires a stable internet connection. If you experience connectivity issues, you may want to use standard quality instead.</p>
+                    <img src="images/zoom-hd-toggle.png" alt="HD video quality toggle">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="verification" class="step">
-        <h3>Final Verification</h3>
-        <p>After Zoom processes your request and activates HD for your account, follow these steps to verify it's working correctly:</p>
-        <ol>
-            <li>Restart your Zoom application</li>
-            <li>Start a new meeting with at least one other participant</li>
-            <li>Make sure your camera is turned on with the HD option checked in your video settings</li>
-            <li>Go to Statistics (in the Settings menu)</li>
-            <li>Check your video resolution - if everything has been configured correctly:</li>
-        </ol>
-        <ul>
-            <li>Pro/Business plans should now see <strong>1280×720 (HD)</strong> resolution</li>
-            <li>Enterprise/Education plans may see up to <strong>1920×1080 (Full HD)</strong> resolution if enabled by your administrator</li>
-        </ul>
-        <p>Example of successful HD activation:</p>
-        <img src="images/final-test.png" alt="Final verification showing HD resolution">
-        <p><strong>Note:</strong> HD resolution may be dynamically adjusted based on your internet connection quality and bandwidth. For best results, ensure you have a stable, high-speed connection.</p>
+    <div id="step2" class="accordion">
+        <div class="accordion-header">Step 2: Requesting HD Activation</div>
+        <div class="accordion-content">
+            <div class="accordion-inner">
+                <div class="step">
+                    <h3>Contacting Support</h3>
+                    <p>1. Visit the <a href="https://support.zoom.com/hc/en/contact?id=contact_us" target="_blank" class="zoom-link">Zoom Support Center</a></p>
+                    <p>2. Scroll to the bottom of the page</p>
+                    <p>3. Click the "Submit a Ticket" button</p>
+                    <p>4. You'll be taken to the support request form</p>
+                    <img src="images/zoom-support-portal.png" alt="Zoom Support Center">
+                </div>
+
+                <div class="step">
+                    <h3>Submitting Your Request</h3>
+                    <p>Complete the form with these details:</p>
+                    
+                    <div class="support-details">
+                        <div class="field-instruction">
+                            <strong>Issue Type:</strong>
+                            <p>Select "Technical Support"</p>
+                        </div>
+                        
+                        <div class="field-instruction">
+                            <strong>Priority Level:</strong>
+                            <p>Select "Normal" - standard for feature requests</p>
+                        </div>
+                        
+                        <div class="field-instruction">
+                            <strong>Subject:</strong>
+                            <p>Use: "HD Video Quality Activation Request"</p>
+                        </div>
+                        
+                        <div class="field-instruction">
+                            <strong>Description:</strong>
+                            <p>You can use this message:</p>
+                            <blockquote>
+                                "Hello, I would like to request HD video quality activation on the backend for my Zoom account. I have enabled the HD settings in my account and would appreciate your help in activating this feature. This will help improve the video quality of my meetings. Thank you for your assistance."
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <p>Reference for the support form:</p>
+                    <img src="images/zoom-support-ticket.png" alt="Support request form">
+                    <p>Additional form fields:</p>
+                    <img src="images/zoom-support-ticket2.png" alt="Support form details">
+                </div>
+
+                <div class="step">
+                    <h3>Confirmation</h3>
+                    <p>After Zoom processes your request, you'll receive a confirmation that HD has been activated. You may need to restart your Zoom application for the changes to take effect.</p>
+                    <p>Confirmation message example:</p>
+                    <img src="images/zoom-hd-confirmation.png" alt="HD activation confirmation">
+                    <p>Additional confirmation details:</p>
+                    <img src="images/zoom-hd-confirmation2.png" alt="Activation details">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="verification" class="accordion">
+        <div class="accordion-header">Final Verification</div>
+        <div class="accordion-content">
+            <div class="accordion-inner">
+                <div class="step">
+                    <h3>Final Verification</h3>
+                    <p>After Zoom processes your request and activates HD for your account, follow these steps to verify it's working correctly:</p>
+                    <ol>
+                        <li>Restart your Zoom application</li>
+                        <li>Start a new meeting with at least one other participant</li>
+                        <li>Make sure your camera is turned on with the HD option checked in your video settings</li>
+                        <li>Go to Statistics (in the Settings menu)</li>
+                        <li>Check your video resolution - if everything has been configured correctly:</li>
+                    </ol>
+                    <ul>
+                        <li>Pro/Business plans should now see <strong>1280×720 (HD)</strong> resolution</li>
+                        <li>Enterprise/Education plans may see up to <strong>1920×1080 (Full HD)</strong> resolution if enabled by your administrator</li>
+                    </ul>
+                    <p>Example of successful HD activation:</p>
+                    <img src="images/final-test.png" alt="Final verification showing HD resolution">
+                    <p><strong>Note:</strong> HD resolution may be dynamically adjusted based on your internet connection quality and bandwidth. For best results, ensure you have a stable, high-speed connection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Stuff Section (moved from top) -->
+    <div id="technical-stuff" class="accordion">
+        <div class="accordion-header">Technical Requirements</div>
+        <div class="accordion-content">
+            <div class="accordion-inner">
+                <strong>Important Note:</strong> Zoom typically limits video quality to conserve bandwidth. To enable HD video, you'll need to adjust your settings and request activation from Zoom Support. We'll guide you through both steps below.
+                
+                <h3>Requirements for HD Video</h3>
+                
+                <h4>Standard HD (720p)</h4>
+                <ul>
+                    <li><strong>Account type:</strong> Pro, Business, Education, or Enterprise account</li>
+                    <li><strong>Application:</strong> Full-screen meeting window on Zoom desktop app</li>
+                    <li><strong>Software:</strong> Zoom desktop app for Windows, macOS, or Linux (Global minimum version or higher)</li>
+                    <li><strong>Mobile:</strong> Zoom mobile app for Android or iOS (Global minimum version or higher)</li>
+                </ul>
+                
+                <h4>Full HD (1080p)</h4>
+                <ul>
+                    <li><strong>Account type:</strong> Pro (with Zoom Events or Zoom Sessions license), Business, Education, or Enterprise account</li>
+                    <li><strong>Support activation:</strong> Setting must be enabled by Zoom Support</li>
+                    <li><strong>Hardware:</strong> i7 Quad Core (physical core) CPU or higher</li>
+                    <li><strong>Software:</strong> Zoom desktop app for Windows or macOS (Global minimum version or higher)</li>
+                </ul>
+                
+                <p><strong>Note:</strong> HD video requires a stable internet connection. For best results, ensure you have a high-speed connection.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Social Share Section -->
@@ -756,11 +862,12 @@
         // Function to update active navigation link based on scroll position
         function updateActiveNavLink() {
             const sections = [
-                document.getElementById('requirements'),
+                document.getElementById('tldr'),
                 document.getElementById('initial-testing'),
                 document.getElementById('step1'),
                 document.getElementById('step2'),
-                document.getElementById('verification')
+                document.getElementById('verification'),
+                document.getElementById('technical-stuff')
             ];
             
             const navLinks = document.querySelectorAll('.navigation-header nav a');
@@ -817,6 +924,49 @@
         document.querySelectorAll('img').forEach(img => {
             img.addEventListener('load', () => {
                 img.classList.add('loaded');
+            });
+        });
+        
+        // Accordion Functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                this.classList.toggle('active');
+                
+                // Update the nav highlighting when opening an accordion
+                const sectionId = this.parentElement.id;
+                if (this.classList.contains('active') && sectionId) {
+                    document.querySelectorAll('.navigation-header nav a').forEach(a => {
+                        a.classList.remove('active');
+                        if (a.getAttribute('href') === '#' + sectionId) {
+                            a.classList.add('active');
+                        }
+                    });
+                    
+                    // Smooth scroll to the accordion
+                    const yOffset = -70; // Adjust scroll position to account for sticky header
+                    const element = document.getElementById(sectionId);
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                }
+            });
+        });
+        
+        // Open accordion when clicking on nav links
+        document.querySelectorAll('.navigation-header nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href').substring(1);
+                if (targetId !== 'tldr') {
+                    const targetAccordion = document.getElementById(targetId);
+                    if (targetAccordion) {
+                        const header = targetAccordion.querySelector('.accordion-header');
+                        if (header && !header.classList.contains('active')) {
+                            header.click();
+                        }
+                    }
+                }
             });
         });
     </script>
