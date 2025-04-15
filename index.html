@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting HD Video Quality in Zoom</title>
+    
+    <!-- Meta description -->
+    <meta name="description" content="A step-by-step guide to enable HD video quality (720p/1080p) in Zoom meetings, including system requirements and support request instructions.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jwcow.github.io/zoom-hd-guide/">
+    <meta property="og:title" content="Getting HD Video Quality in Zoom: Step-by-Step Guide">
+    <meta property="og:description" content="Learn how to enable HD and Full HD video quality in your Zoom meetings with this comprehensive guide covering requirements, settings, and the support request process.">
+    <meta property="og:image" content="https://jwcow.github.io/zoom-hd-guide/images/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jwcow.github.io/zoom-hd-guide/">
+    <meta property="twitter:title" content="Getting HD Video Quality in Zoom: Step-by-Step Guide">
+    <meta property="twitter:description" content="Learn how to enable HD and Full HD video quality in your Zoom meetings with this comprehensive guide covering requirements, settings, and the support request process.">
+    <meta property="twitter:image" content="https://jwcow.github.io/zoom-hd-guide/images/social-preview.png">
+    
     <style>
         html {
             scroll-behavior: smooth;
@@ -401,6 +421,82 @@
         #requirements ul li {
             margin-bottom: 8px;
         }
+        
+        /* Social Share Styles */
+        .social-share {
+            margin: 40px 0 20px;
+            padding: 20px;
+            background-color: var(--note-bg);
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .social-share h3 {
+            color: var(--highlight-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .share-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: white;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .share-icon {
+            font-size: 1.3em;
+            margin-right: 5px;
+        }
+        
+        .share-button:hover {
+            background-color: var(--highlight-color);
+            color: white;
+            border-color: var(--highlight-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .twitter:hover {
+            background-color: #1DA1F2;
+            border-color: #1DA1F2;
+        }
+        
+        .facebook:hover {
+            background-color: #4267B2;
+            border-color: #4267B2;
+        }
+        
+        .linkedin:hover {
+            background-color: #0077B5;
+            border-color: #0077B5;
+        }
+        
+        .email:hover {
+            background-color: #DB4437;
+            border-color: #DB4437;
+        }
+        
+        @media (max-width: 600px) {
+            .share-button {
+                flex: 1 0 40%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -584,6 +680,25 @@
         <p>Example of successful HD activation:</p>
         <img src="images/final-test.png" alt="Final verification showing HD resolution">
         <p><strong>Note:</strong> HD resolution may be dynamically adjusted based on your internet connection quality and bandwidth. For best results, ensure you have a stable, high-speed connection.</p>
+    </div>
+
+    <!-- Social Share Section -->
+    <div class="social-share">
+        <h3>Share This Guide</h3>
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?url=https://jwcow.github.io/zoom-hd-guide/&text=Getting HD Video Quality in Zoom: Step-by-Step Guide" target="_blank" class="share-button twitter">
+                <span class="share-icon">🐦</span> Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://jwcow.github.io/zoom-hd-guide/" target="_blank" class="share-button facebook">
+                <span class="share-icon">📘</span> Facebook
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://jwcow.github.io/zoom-hd-guide/&title=Getting HD Video Quality in Zoom: Step-by-Step Guide" target="_blank" class="share-button linkedin">
+                <span class="share-icon">💼</span> LinkedIn
+            </a>
+            <a href="mailto:?subject=Getting HD Video Quality in Zoom: Step-by-Step Guide&body=Check out this helpful guide on enabling HD video in Zoom: https://jwcow.github.io/zoom-hd-guide/" class="share-button email">
+                <span class="share-icon">✉️</span> Email
+            </a>
+        </div>
     </div>
 
     <script>

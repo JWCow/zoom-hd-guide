@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Preview Image Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        
+        .preview-card {
+            width: 1200px;
+            height: 630px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: #2D8CFF;
+            padding: 40px;
+            color: white;
+        }
+        
+        .title {
+            font-size: 64px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 32px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .content {
+            display: flex;
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .text {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .features {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .feature {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            margin-right: 15px;
+        }
+        
+        .image-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-area img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 40px;
+            color: #2D8CFF;
+            font-size: 24px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-card">
+        <div class="header">
+            <h1 class="title">Getting HD Video Quality in Zoom</h1>
+            <p class="subtitle">A Step-by-Step Guide</p>
+        </div>
+        <div class="content">
+            <div class="text">
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">📋</span> Requirements for HD video
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">⚙️</span> Settings configuration
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🎫</span> Support request process
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✅</span> Verification instructions
+                    </div>
+                </div>
+            </div>
+            <div class="image-area">
+                <img src="images/zoom-hd-toggle.png" alt="HD Video Toggle">
+            </div>
+        </div>
+        <div class="footer">
+            jwcow.github.io/zoom-hd-guide
+        </div>
+    </div>
+</body>
+</html> 
