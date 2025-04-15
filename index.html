@@ -1,42 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-mode">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enabling HD Video Quality in Zoom</title>
     <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --border-color: #333;
+            --highlight-color: #2D8CFF;
+            --note-bg: #2d2d1f;
+            --note-border: #454534;
+        }
+
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
+
         .step {
             margin-bottom: 30px;
             padding: 20px;
-            border: 1px solid #e0e0e0;
+            border: 1px solid var(--border-color);
             border-radius: 5px;
+            background-color: #242424;
         }
+
         h1, h2 {
-            color: #2D8CFF;
+            color: var(--highlight-color);
         }
+
         img {
             max-width: 100%;
             height: auto;
             margin: 15px 0;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border-color);
             border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
         .note {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffeeba;
+            background-color: var(--note-bg);
+            border-left: 4px solid var(--note-border);
             padding: 15px;
             margin: 20px 0;
+        }
+
+        blockquote {
+            background-color: #2a2a2a;
+            border-left: 4px solid var(--highlight-color);
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            margin: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .support-details {
+            background-color: #2a2a2a;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .field-instruction {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid var(--highlight-color);
         }
     </style>
 </head>
 <body>
+    <!-- Modal for fullscreen images -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage">
+    </div>
+
     <h1>Enabling HD Video Quality in Zoom</h1>
 
     <div class="note">
@@ -73,14 +153,32 @@
     <div class="step">
         <h3>Step 2: Support Ticket Submission</h3>
         <p>Complete the support ticket with the following specifications:</p>
-        <ul>
-            <li>Priority Level: Select appropriate urgency</li>
-            <li>Subject Line: "HD Video Quality Activation Request"</li>
-            <li>Description: Utilize the following professional template:</li>
-        </ul>
-        <blockquote>
-            "I am writing to request the activation of full HD video capability for my Zoom account. I have configured the client-side HD settings and would like to request the necessary account-level activation to enable optimal video quality for my professional meetings. Thank you for your assistance in this matter."
-        </blockquote>
+        
+        <div class="support-details">
+            <div class="field-instruction">
+                <strong>Issue Type:</strong>
+                <p>Select "Technical Support"</p>
+            </div>
+            
+            <div class="field-instruction">
+                <strong>Priority Level:</strong>
+                <p>Select "Normal" - This is appropriate for feature activation requests</p>
+            </div>
+            
+            <div class="field-instruction">
+                <strong>Subject Line:</strong>
+                <p>Copy and paste exactly: "HD Video Quality Activation Request"</p>
+            </div>
+            
+            <div class="field-instruction">
+                <strong>Description:</strong>
+                <p>Copy and paste the following template:</p>
+                <blockquote>
+                    "I am writing to request the activation of full HD video capability for my Zoom account. I have configured the client-side HD settings and would like to request the necessary account-level activation to enable optimal video quality for my professional meetings. Thank you for your assistance in this matter."
+                </blockquote>
+            </div>
+        </div>
+
         <p>Example of the support ticket form:</p>
         <img src="images/zoom-support-ticket.png" alt="Support Ticket Form">
         <p>Additional details for the support ticket:</p>
@@ -95,5 +193,39 @@
         <p>Additional verification details:</p>
         <img src="images/zoom-hd-confirmation2.png" alt="Additional Confirmation Details">
     </div>
+
+    <script>
+        // Get the modal
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.getElementsByClassName("modal-close")[0];
+
+        // Get all images in the document
+        document.querySelectorAll('img').forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+            }
+        });
+
+        // Close the modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside the image
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                modal.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html> 
