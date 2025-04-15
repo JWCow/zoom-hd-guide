@@ -158,7 +158,7 @@
             width: 100%;
             height: 4px;
             background: var(--border-color);
-            z-index: 1000;
+            z-index: 1001;
         }
 
         .progress-bar {
@@ -219,12 +219,22 @@
 
         /* Navigation Header Styles */
         .navigation-header {
-            background-color: var(--note-bg);
+            background-color: var(--bg-color);
             border-radius: 5px;
-            margin: 20px 0;
-            padding: 5px;
+            margin: 10px 0 20px 0;
+            padding: 8px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 5px;
+            z-index: 900;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Style when header is sticky (scrolled) */
+        .navigation-header.sticky {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            border-color: var(--highlight-color);
         }
 
         .navigation-header nav ul {
@@ -311,6 +321,12 @@
         .navigation-header nav a.active {
             background-color: var(--highlight-color);
             color: white;
+        }
+
+        /* To prevent content jump when header becomes sticky */
+        .navigation-spacer {
+            height: 0;
+            margin: 0;
         }
     </style>
 </head>
@@ -529,6 +545,14 @@
             
             navLinks.forEach(link => link.classList.remove('active'));
             navLinks[currentSectionIndex].classList.add('active');
+            
+            // Add "sticky" class when scrolled
+            const navHeader = document.querySelector('.navigation-header');
+            if (window.scrollY > 20) {
+                navHeader.classList.add('sticky');
+            } else {
+                navHeader.classList.remove('sticky');
+            }
         }
         
         // Back to Top Functionality
