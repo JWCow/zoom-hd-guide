@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting HD Video Quality in Zoom</title>
     <style>
-        :root {
+        html {
+            scroll-behavior: smooth;
             --bg-color: #ffffff;
             --text-color: #333333;
             --border-color: #e0e0e0;
@@ -216,6 +217,66 @@
             background: var(--success-color);
         }
 
+        /* Navigation Header Styles */
+        .navigation-header {
+            background-color: var(--note-bg);
+            border-radius: 5px;
+            margin: 20px 0;
+            padding: 5px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .navigation-header nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            list-style-type: none;
+            margin: 0;
+            padding: 10px 0;
+            gap: 10px;
+        }
+
+        .navigation-header nav li {
+            margin: 5px;
+        }
+
+        .navigation-header nav a {
+            color: var(--highlight-color);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+            border: 1px solid var(--highlight-color);
+        }
+
+        .navigation-header nav a:hover {
+            background-color: var(--highlight-color);
+            color: white;
+        }
+
+        /* Responsive adjustments for navigation */
+        @media (max-width: 600px) {
+            .navigation-header nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .navigation-header nav li {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .navigation-header nav a {
+                display: block;
+                width: 100%;
+            }
+        }
+
         /* Print Styles */
         @media print {
             body {
@@ -230,7 +291,8 @@
 
             .back-to-top,
             .progress-container,
-            .copy-button {
+            .copy-button,
+            .navigation-header {
                 display: none;
             }
 
@@ -243,6 +305,12 @@
                 max-width: 500px;
                 margin: 10px auto;
             }
+        }
+
+        /* Active Navigation Link Style */
+        .navigation-header nav a.active {
+            background-color: var(--highlight-color);
+            color: white;
         }
     </style>
 </head>
@@ -263,13 +331,25 @@
 
     <h1>Getting HD Video Quality in Zoom</h1>
 
-    <div class="note">
+    <div class="navigation-header">
+        <nav>
+            <ul>
+                <li><a href="#requirements">Plan Requirements</a></li>
+                <li><a href="#initial-testing">Initial Testing</a></li>
+                <li><a href="#step1">Settings Configuration</a></li>
+                <li><a href="#step2">Support Request</a></li>
+                <li><a href="#verification">Final Verification</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="requirements" class="note">
         <strong>Important Note:</strong> Zoom typically limits video quality to conserve bandwidth. To enable HD video, you'll need to adjust your settings and request activation from Zoom Support. We'll guide you through both steps below.
         <p><strong>Plan Requirements:</strong> HD video (720p) is only available for users on <strong>paid Pro, Business, Enterprise, or Education plans</strong>. If you're on a free plan, you'll need to upgrade to access HD quality.</p>
         <p><strong>Enterprise/Education Users:</strong> If you are on an Enterprise or Education plan, you may have the option to increase video quality up to 1080p (Full HD) after completing these steps.</p>
     </div>
 
-    <div class="note">
+    <div id="initial-testing" class="note">
         <strong>Initial Testing:</strong> Before proceeding, you can verify if your account already has HD enabled:
         <ol>
             <li>Start a Zoom meeting with at least one other participant</li>
@@ -281,7 +361,7 @@
         <img src="images/02-initial test.png" alt="Initial HD testing - Statistics showing 640×360 resolution">
     </div>
 
-    <h2>Step 1: Configuring Your Settings</h2>
+    <h2 id="step1">Step 1: Configuring Your Settings</h2>
     <div class="step">
         <h3>Accessing Video Settings</h3>
         <p>1. Go to the <a href="https://us02web.zoom.us/profile/setting" target="_blank" class="zoom-link">Zoom Settings Page</a></p>
@@ -301,7 +381,7 @@
         <img src="images/zoom-hd-toggle.png" alt="HD video quality toggle">
     </div>
 
-    <h2>Step 2: Requesting HD Activation</h2>
+    <h2 id="step2">Step 2: Requesting HD Activation</h2>
     <div class="step">
         <h3>Contacting Support</h3>
         <p>1. Visit the <a href="https://support.zoom.com/hc/en/contact?id=contact_us" target="_blank" class="zoom-link">Zoom Support Center</a></p>
@@ -355,7 +435,7 @@
         <img src="images/zoom-hd-confirmation2.png" alt="Activation details">
     </div>
 
-    <div class="step">
+    <div id="verification" class="step">
         <h3>Final Verification</h3>
         <p>After Zoom processes your request and activates HD for your account, follow these steps to verify it's working correctly:</p>
         <ol>
@@ -421,8 +501,36 @@
             } else {
                 backToTop.classList.remove('visible');
             }
+            
+            // Highlight active section in navigation
+            updateActiveNavLink();
         });
-
+        
+        // Function to update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = [
+                document.getElementById('requirements'),
+                document.getElementById('initial-testing'),
+                document.getElementById('step1'),
+                document.getElementById('step2'),
+                document.getElementById('verification')
+            ];
+            
+            const navLinks = document.querySelectorAll('.navigation-header nav a');
+            
+            let currentSectionIndex = 0;
+            const scrollPosition = window.scrollY + 100; // Offset to trigger earlier
+            
+            sections.forEach((section, index) => {
+                if (section && section.offsetTop <= scrollPosition) {
+                    currentSectionIndex = index;
+                }
+            });
+            
+            navLinks.forEach(link => link.classList.remove('active'));
+            navLinks[currentSectionIndex].classList.add('active');
+        }
+        
         // Back to Top Functionality
         document.querySelector('.back-to-top').addEventListener('click', () => {
             window.scrollTo({
