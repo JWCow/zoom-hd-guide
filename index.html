@@ -328,6 +328,33 @@
             height: 0;
             margin: 0;
         }
+        
+        /* Requirements Section Styling */
+        #requirements h3 {
+            color: var(--highlight-color);
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        
+        #requirements h4 {
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        #requirements ul {
+            margin-left: 10px;
+            padding-left: 20px;
+        }
+        
+        #requirements ul li {
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -361,8 +388,26 @@
 
     <div id="requirements" class="note">
         <strong>Important Note:</strong> Zoom typically limits video quality to conserve bandwidth. To enable HD video, you'll need to adjust your settings and request activation from Zoom Support. We'll guide you through both steps below.
-        <p><strong>Plan Requirements:</strong> HD video (720p) is only available for users on <strong>paid Pro, Business, Enterprise, or Education plans</strong>. If you're on a free plan, you'll need to upgrade to access HD quality.</p>
-        <p><strong>Enterprise/Education Users:</strong> If you are on an Enterprise or Education plan, you may have the option to increase video quality up to 1080p (Full HD) after completing these steps.</p>
+        
+        <h3>Requirements for HD Video</h3>
+        
+        <h4>Standard HD (720p)</h4>
+        <ul>
+            <li><strong>Account type:</strong> Pro, Business, Education, or Enterprise account</li>
+            <li><strong>Application:</strong> Full-screen meeting window on Zoom desktop app</li>
+            <li><strong>Software:</strong> Zoom desktop app for Windows, macOS, or Linux (Global minimum version or higher)</li>
+            <li><strong>Mobile:</strong> Zoom mobile app for Android or iOS (Global minimum version or higher)</li>
+        </ul>
+        
+        <h4>Full HD (1080p)</h4>
+        <ul>
+            <li><strong>Account type:</strong> Pro (with Zoom Events or Zoom Sessions license), Business, Education, or Enterprise account</li>
+            <li><strong>Support activation:</strong> Setting must be enabled by Zoom Support</li>
+            <li><strong>Hardware:</strong> i7 Quad Core (physical core) CPU or higher</li>
+            <li><strong>Software:</strong> Zoom desktop app for Windows or macOS (Global minimum version or higher)</li>
+        </ul>
+        
+        <p><strong>Note:</strong> HD video requires a stable internet connection. For best results, ensure you have a high-speed connection.</p>
     </div>
 
     <div id="initial-testing" class="note">
